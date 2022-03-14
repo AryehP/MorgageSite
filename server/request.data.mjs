@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 async function createDBCollection(){
 
     const db = await connectToDB();
-    return db.collection('requests');
+    return db.collection('Requesters');
 
 }
 
