@@ -1,5 +1,6 @@
-import { express } from "express";
+import  express  from "express";
 import bodyParser from "body-parser";
+import { appRouter } from "./routes.mjs";
 
 const hostname = '127.0.0.1';
 const port = '3001';
