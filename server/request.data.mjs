@@ -14,7 +14,7 @@ export async function getAllRequests(){
 }
 
 export async function addNewRequest(newRequest){
-    const Request = await createDBCollection();
+    const request = await createDBCollection();
     return request.insertOne(newRequest);
 }
 
