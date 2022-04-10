@@ -5,17 +5,25 @@ import HeaderComponent from './HeaderComponent';
 import HomePage from './HomePage';
 import AllRequests from './AllRequests';
 import { RequestProvider } from '../contexts/RequestContext';
-
+import { Route, Routes } from 'react-router';
 
 function App() {
   return (
     <RequestProvider>
     <div className="App">
+      <div className='header'>
         <HeaderComponent />
-        <HomePage />
-        <AllRequests />
-        <ContactForm />
+      </div>
+      <Routes>
+      
+        <Route path='/' element={<HomePage />}/>
+        <Route path='/allrequests' element={<AllRequests />}/>
+        <Route path='/contactform' element= {<ContactForm />}/>
+      
+      </Routes>
+      <div className='footer'>
         <FooterComponent/>
+      </div>
     </div>
     </RequestProvider>
   );

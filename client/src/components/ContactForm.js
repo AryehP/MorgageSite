@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useRequestContext } from '../contexts/RequestContext'
 
 function ContactForm() {
+
+  const {state, addRequest} = useRequestContext();
+  const form = useRef(null);
+
   return (
     <div>
-        <form>
+        <form ref={form}>
             <input type="text" name='name'/>
             <input type="email" name='email' />
             <input type="text" name='phone' />
@@ -23,6 +28,7 @@ function ContactForm() {
               <option value='employee'>Employee</option>
               <option value='independent'>Independent</option>
             </select>
+            <button type='submit' onClick={() => addRequest()}>submit</button>
         </form>
     </div>
   )

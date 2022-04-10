@@ -13,6 +13,10 @@ function reducer(state, action){
             return{
                 items: state.items.find(item => item === action.payload.id),
             };
+        case 'ADD_REQUEST':
+            return{
+                
+            };
     }
 }
 
@@ -40,6 +44,18 @@ function RequestProvider({children}){
             payload: {id},
         })
     })
+
+   const addRequest = useCallback(data => {
+        fetch('api/requests',{
+            method: 'POST',
+            body: data,
+        })
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: 'ADD_REQUESTS',
+            payload: {data},
+        }))
+   })
 
     const value = useMemo(() => ({
         state
