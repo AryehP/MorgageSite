@@ -15,7 +15,20 @@ export async function getAllRequests(){
 
 export async function addNewRequest(newRequest){
     const request = await getDBCollection();
-    return request.insertOne(newRequest);
+    console.log(newRequest);
+    const data = {
+        requester_full_name: newRequest['requester-fullname'],
+        requester_phone_number: newRequest['requester-phone'],
+        requester_email: newRequest['requester-email'],
+        requester_lifestatus: newRequest['requester-lifestatus'],
+        requester_workstatus: newRequest['requester-workstatus'],
+        partner_full_name: newRequest['partner-fullname'],
+        partner_phone_number: newRequest['partner-phone'],
+        partner_email: newRequest['partner-email'],
+        partner_lifestatus: newRequest['partner-lifestatus'],
+
+    };
+    return request.insertOne(data);
 }
 
 export async function getRequestById(id){
