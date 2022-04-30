@@ -11,11 +11,11 @@ function AllRequests() {
     <div className='all-requests'>
 
         {state.items.map(request => {
-          const name = request.full_name;
+          const name = request.requester_full_name;
           
           return(
           // <h6 key={request.id}>{name}</h6>
-           <Link key={name} to={`/${name}`}>{name}</Link>
+           <Link key={request._id} to={`/${name}`}>{name}</Link>
           )
         })
       }

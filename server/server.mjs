@@ -1,5 +1,6 @@
 import  express  from "express";
 import bodyParser from "body-parser";
+import "./db.mjs";
 import { appRouter } from "./routes.mjs";
 
 const hostname = '127.0.0.1';

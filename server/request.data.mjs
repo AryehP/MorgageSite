@@ -1,22 +1,18 @@
-import { connectToDB } from "./db.mjs";
-import { ObjectId } from "mongodb";
+import { Request } from "./request.model.mjs";
 
-async function getDBCollection(){
+// async function getDBCollection(){
 
-    const db = await connectToDB();
-    return db.collection('Requesters');
+//     const db = await connectToDB();
+//     return db.collection('Requesters');
 
-}
+// }
 
 export async function getAllRequests(){
-    const requests = await getDBCollection();
-    return requests.find({}).toArray();
+    return Request.find();
 }
 
 export async function addNewRequest(newRequest){
-    const request = await getDBCollection();
-    console.log(newRequest);
-    const data = {
+    const request = new Request( {
         requester_full_name: newRequest['requester-fullname'],
         requester_phone_number: newRequest['requester-phone'],
         requester_email: newRequest['requester-email'],
@@ -27,25 +23,21 @@ export async function addNewRequest(newRequest){
         partner_email: newRequest['partner-email'],
         partner_lifestatus: newRequest['partner-lifestatus'],
 
-    };
-    return request.insertOne(data);
+    });
+    return request.save();
 }
 
 export async function getRequestById(id){
     
-    const request = await getDBCollection();
-    return request.findOne({_id: ObjectId(id)})
+    return Request.findById(id);
     
 }
 
 export async function updateRequest(id, request){
     
-   const requests = await getDBCollection();
-
-    return requests.updateOne({_id: ObjectId(id)}, {$set: request});
+  return findByIdAndUpdate(id,request);
 }
 
 export async function deleteRequest(id){
-    const requests = await getDBCollection();
-    requests.deleteOne({_id: ObjectId(id)})
+    return findByIdAndDelete(id);
 }
