@@ -11,7 +11,8 @@ function reducer(state, action){
            };
         case 'GET_REQUEST_BY_ID':
             return{
-                items: state.items.find(item => item === action.payload.id),
+                state,
+                items: action.payload.id,
             };
         case 'ADD_REQUEST':
             return{
@@ -31,19 +32,29 @@ function RequestProvider({children}){
 
         fetch('api/requests')
         .then(response => response.json())
-       .then(data => dispatch({
+        .then(data => dispatch({
            type: 'GET_ALL_REQUESTS',
            payload: {data},
        }));
   
     },[])
 
-    const getRequest = useCallback((id) => {
-        dispatch({
-            type: 'GET_REQUEST_BY_ID',
-            payload: {id},
-        })
-    })
+    // const getRequest = useCallback((id) => {
+    //     dispatch({
+    //         type: 'GET_REQUEST_BY_ID',
+    //         payload: {id},
+    //     })
+    // })
+
+    const getRequest = useCallback (id => useEffect(() => {
+        fetch(`api/requests/${id}`)
+            .then(response => response.json())
+            .then(data => dispatch({
+                type: 'GET_REQUEST_BY_ID',
+                payload:{id},
+            }))
+        },[]))
+    
 
    const addRequest = useCallback(data => {
         fetch('api/requests',{

@@ -15,7 +15,7 @@ function AllRequests() {
           
           return(
           // <h6 key={request.id}>{name}</h6>
-           <Link key={request._id} to={`/${name}`}>{name}</Link>
+           <Link key={request._id} to={`/${request._id}`}>{name}</Link>
           )
         })
       }
