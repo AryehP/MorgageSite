@@ -1,0 +1,12 @@
+.content{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+label{
+    border-style: double;
+    border: 2px;
+    border-color: black;
+}

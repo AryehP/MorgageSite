@@ -3,6 +3,8 @@ import { useRequestContext } from '../contexts/RequestContext'
 import { set, useForm } from "react-hook-form";
 import { useState } from 'react';
 import './ContactForm.css';
+import { useNavigate } from 'react-router';
+
 
 
 
@@ -10,7 +12,15 @@ function ContactForm() {
   const { handleSubmit, register } = useForm();
   const {addRequest} = useRequestContext();
   const [formType, setFormType] = useState(false);
+  
+  const navigate = useNavigate();
 
+  const submitForm = (e) => {
+    e.preventDefault();
+    handleSubmit(addRequest);
+    navigate('/Auturizetion');
+  }
+  
   const dropDownChange = () => {
     console.log(formType);
     formType == true ? setFormType(false) : setFormType(true);
@@ -50,7 +60,7 @@ function ContactForm() {
             </select>
             <br />
             {formType == true ? coupleForm : null}
-            <button type='submit' className='form-btn'>submit</button>
+            <button type='submit' className='form-btn' >submit</button>
         </form>
     </div>
   )

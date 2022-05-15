@@ -4,10 +4,10 @@
     align-items: center;
     flex-direction: row;
     padding: 10px;
-    position: absolute;
+    position:fixed;
     bottom: 0px;
     background-color: #7C99AC;
-    width: 60%;
+    width: 61%;
     margin: auto;
 }
 

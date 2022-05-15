@@ -8,6 +8,7 @@ import AllRequests from './AllRequests';
 import { RequestProvider } from '../contexts/RequestContext';
 import { Route, Routes } from 'react-router';
 import IndividualRequest from './IndividualRequest';
+import Autureize from './Autureize';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/allrequests' element={<AllRequests />}/>
         <Route path='/contactform' element= {<ContactForm />}/>
         <Route path='/:request' element={<IndividualRequest />}/>
+        <Route path='/Auturizetion' element={<Autureize />}/>
       </Routes>
       <div className='footer'>
         <FooterComponent/>

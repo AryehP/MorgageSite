@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRequestContext } from '../contexts/RequestContext';
 import { Link , Outlet} from 'react-router-dom';
+import './AllRequests.css';
 function AllRequests() {
 
   const {state} = useRequestContext();
@@ -14,8 +15,10 @@ function AllRequests() {
           const name = request.requester_full_name;
           
           return(
-          // <h6 key={request.id}>{name}</h6>
-           <Link key={request._id} to={`/${request._id}`}>{name}</Link>
+          <div className='request'>
+            <Link key={request._id} to={`/${request._id}`}>{name}</Link>
+          </div>
+           
           )
         })
       }
